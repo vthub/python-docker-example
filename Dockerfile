@@ -9,7 +9,7 @@ FROM python:3
 #
 # 2. Install libraries that are required by your script
 #
-RUN pip install art
+RUN pip install art Flask
 
 #
 # 3. Set your working directory
@@ -22,6 +22,12 @@ WORKDIR /app
 ADD index.py /app/
 
 #
-# 5. Tell docker what to start when docker starts.
+# 5. Expose port to allow incoming network connections
+#    This is the same port as you specified in the index.py
+#
+EXPOSE 8080
+
+#
+# 6. Tell docker what to start when docker starts.
 #
 CMD [ "python", "/app/index.py" ]
